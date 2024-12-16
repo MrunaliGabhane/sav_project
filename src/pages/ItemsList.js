@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { SearchBox } from "../components/SearchBox";
+import Pagination from "../components/Pagination";
 
 const ItemsList = () => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1)
+  const [limit, setLimit] = useState(10)
+
+  const totalItems = filteredItems.length;
+  const totalPages = Math.ceil(totalItems / limit);
 
   const handleLoadItems = async () => {
-    const data = await fetch("https://jsonplaceholder.typicode.com/todos");
+    const data = await fetch("https://fakestoreapi.com/products");
     const response = await data.json();
     console.log(response);
     setItems(response);
@@ -23,6 +29,17 @@ const ItemsList = () => {
     );
 
     setFilteredItems(filtered);
+    setCurrentPage(1);
+  };
+
+  const getPaginatedItems = () => {
+    const startIndex = (currentPage - 1) * limit;
+    const endIndex = startIndex + limit;
+    return filteredItems.slice(startIndex, endIndex);
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   useEffect(() => {
@@ -40,9 +57,9 @@ const ItemsList = () => {
             <SearchBox handleSearch={handleSearch} searchTerm={searchTerm} />
           </div>
           <div className="bg-white shadow-md rounded-lg p-6">
-            {filteredItems.length > 0 ? (
+            {getPaginatedItems().length > 0 ? (
               <ul className="space-y-4">
-                {filteredItems.map((item, index) => (
+                {getPaginatedItems().map((item, index) => (
                   <li
                     key={item.id}
                     className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow-lg cursor-grab hover:bg-red-300">
@@ -60,6 +77,11 @@ const ItemsList = () => {
           </div>
         </div>
       </div>
+      <Pagination
+      currentPage={currentPage}
+      totalPages={totalPages}
+      handlePageChange={handlePageChange}
+      />
     </>
   );
 };
