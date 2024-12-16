@@ -63,4 +63,5 @@ sav_project/
 │ ├── styles.css # Global styles
 
 ├── package.json # Project metadata and dependencies
+
 ├── README.md # Project documentation
