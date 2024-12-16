@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# _Sav_project Item List Application_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## _Project Overview_
 
-## Available Scripts
+This project demonstrates key frontend skills, including client-side pagination, search filters, drag-and-drop functionality, integration with APIs, and Google reCAPTCHA validation. It is designed to showcase reusable code, modular architecture, and best practices for React-based applications.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## _Features_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. _Item List with Pagination:_
+   - Displays a paginated list of items with a limit of 10 items per page.
+   - Dynamically updates based on search results or reordered items.
+2. _Search Filter:_
+   - Provides a text-based search feature to filter items by title.
+3. _Drag-and-Drop Functionality:_
+   - Allows users to reorder items within the same page using drag-and-drop.
+4. _Google reCAPTCHA Integration:_
+   - Ensures that the user is human before displaying the items.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## _Technologies Used_
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- _React.js_: For building the UI components and implementing client-side logic.
+- _Tailwind CSS_: For styling the components.
+- _Google reCAPTCHA_: For verifying user interactions.
 
-### `npm run build`
+## _Setup Instructions_
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. _Clone the Repository_
+   ```bash
+   git clone https://github.com/MrunaliGabhane/sav_project.git
+   cd sav_project
+   npm install
+   npm start
+   http://localhost:3000
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Project Structure
+sav_project/
+├── public/ # Static files
+├── src/ # Source code
+│ ├── components/ # Reusable components
+│ │ ├── Pagination.js # Pagination component
+│ │ ├── SearchBox.js # Search input component
+│ ├── pages/ # Page components
+│ │ ├── ItemList.js # Main item listing page
+│ │ ├── Recaptcha.js # reCAPTCHA validation page
+│ ├── App.js # Main React component
+│ ├── index.js # React entry point
+│ ├── styles.css # Global styles
+├── package.json # Project metadata and dependencies
+├── README.md # Project documentation

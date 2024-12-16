@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-
+import "../App.css"
 const Recaptcha = ({ onVerify }) => {
   const [verified, setVerified] = useState(false);
 
