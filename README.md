@@ -31,7 +31,6 @@ This project demonstrates key frontend skills, including client-side pagination,
 1. _Clone the Repository_
    ```bash
    git clone https://github.com/MrunaliGabhane/sav_project.git
-   cd sav_project
    npm install
    npm start
    http://localhost:3000
