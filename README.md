@@ -40,6 +40,7 @@ This project demonstrates key frontend skills, including client-side pagination,
 Project Structure
 sav_project/
 ├── public/ # Static files
+
 ├── src/ # Source code
 │ ├── components/ # Reusable components
 │ │ ├── Pagination.js # Pagination component
