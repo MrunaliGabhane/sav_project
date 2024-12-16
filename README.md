@@ -39,17 +39,28 @@ This project demonstrates key frontend skills, including client-side pagination,
 
 Project Structure
 sav_project/
+
 ├── public/ # Static files
 
 ├── src/ # Source code
+
 │ ├── components/ # Reusable components
+
 │ │ ├── Pagination.js # Pagination component
+
 │ │ ├── SearchBox.js # Search input component
+
 │ ├── pages/ # Page components
+
 │ │ ├── ItemList.js # Main item listing page
+
 │ │ ├── Recaptcha.js # reCAPTCHA validation page
+
 │ ├── App.js # Main React component
+
 │ ├── index.js # React entry point
+
 │ ├── styles.css # Global styles
+
 ├── package.json # Project metadata and dependencies
 ├── README.md # Project documentation
