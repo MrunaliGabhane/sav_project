@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { SearchBox } from "../components/SearchBox";
 
 const ItemsList = () => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleLoadItems = async () => {
     const data = await fetch("https://jsonplaceholder.typicode.com/todos");
@@ -10,6 +12,17 @@ const ItemsList = () => {
     console.log(response);
     setItems(response);
     setFilteredItems(response);
+  };
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+    const lowerCaseTerm = term.toLowerCase();
+
+    const filtered = items.filter(
+      (item) => item.title && item.title.toLowerCase().includes(lowerCaseTerm)
+    );
+
+    setFilteredItems(filtered);
   };
 
   useEffect(() => {
@@ -23,6 +36,9 @@ const ItemsList = () => {
           <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
             Item Section
           </h1>
+          <div className="w-full max-w-2xl">
+            <SearchBox handleSearch={handleSearch} searchTerm={searchTerm} />
+          </div>
           <div className="bg-white shadow-md rounded-lg p-6">
             {filteredItems.length > 0 ? (
               <ul className="space-y-4">
