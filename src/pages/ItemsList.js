@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SearchBox } from "../components/SearchBox";
 import Pagination from "../components/Pagination";
 
@@ -8,6 +8,7 @@ const ItemsList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1)
   const [limit, setLimit] = useState(10)
+  const draggedItemIndex = useRef(null);
 
   const totalItems = filteredItems.length;
   const totalPages = Math.ceil(totalItems / limit);
@@ -42,6 +43,31 @@ const ItemsList = () => {
     setCurrentPage(page);
   };
 
+  const handleDragStart = (index) => {
+    // Calculate the index in the full filteredItems array
+    const globalIndex = (currentPage - 1) * limit + index;
+    draggedItemIndex.current = globalIndex;
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (index) => {
+    // Calculate the index in the full filteredItems array
+    const globalIndex = (currentPage - 1) * limit + index;
+    const draggedIndex = draggedItemIndex.current;
+
+    if (draggedIndex === null || draggedIndex === globalIndex) return;
+
+    const updatedItems = [...filteredItems];
+    const [draggedItem] = updatedItems.splice(draggedIndex, 1);
+    updatedItems.splice(globalIndex, 0, draggedItem);
+
+    setFilteredItems(updatedItems);
+    draggedItemIndex.current = null;
+  };
+
   useEffect(() => {
     handleLoadItems();
   }, []);
@@ -62,7 +88,11 @@ const ItemsList = () => {
                 {getPaginatedItems().map((item, index) => (
                   <li
                     key={item.id}
-                    className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow-lg cursor-grab hover:bg-red-300">
+                    draggable
+                    onDragStart={() => handleDragStart(index)}
+                    onDragOver={handleDragOver}
+                    onDrop={() => handleDrop(index)}
+                    className="flex items-center justify-between bg-gray-100 p-4 rounded-lg hover:shadow-lg cursor-grab hover:bg-blue-500">
                     <div>
                       <h2 className="text-lg font-semibold text-gray-700">
                         {item.id} : {item.title}
